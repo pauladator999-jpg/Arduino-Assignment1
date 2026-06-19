@@ -1,31 +1,35 @@
+int startValue = 5;
 int ledPin = 13;
+
+void flashLED(int times){
+  int count = 0;
+  while (count < times){
+  digitalWrite(ledPin, HIGH); delay(200); 
+  digitalWrite(ledPin, LOW); delay(200);
+  count ++;}
+}
 
 void setup(){
   pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
 
-  Serial.println("=== Countdown beginning ===");
+  Serial.println("=== SMART COUNTDOWN STARTING ===");
   
-  int counter = 5;   //start the counter at 5
+  int count = startValue;   //start the counter at 5
   
-  while(counter > 0) {
-    Serial.print("Counter is: ");
-    Serial.println(counter);
+  while(count > 0) {
+    Serial.print("Count: ");
+    Serial.println(count);
+    
+    flashLED(count);
 
-    delay(1000);
-    counter = counter - 1;
+  delay(1000);
+    count = count - 1;
     }  
   
-  Serial.println("Liftoff!");
+  Serial.println("===COUNTDOWN COMPLETE===");
   
-  // Flash the LED 3 times to celebrate
-  digitalWrite(ledPin, HIGH); delay(200); digitalWrite(ledPin, LOW); delay(200);
-  digitalWrite(ledPin, HIGH); delay(200); digitalWrite(ledPin, LOW); delay(200);
-  digitalWrite(ledPin, HIGH); delay(200); digitalWrite(ledPin, LOW); delay(200);
   }
-
-
-
 void loop(){
   //Empty - countdown only runs once in setup()
   }
